@@ -1,0 +1,40 @@
+{
+  "name": "custom/php-coding-standard",
+  "type": "library",
+  "description": "This package contains all needed custom PHP_CodeSniffer sniffs for custom project",
+  "homepage": "https://github.com/bambangadrian/customPhpCodeSniffer",
+  "keywords": [
+    "custom",
+    "standard",
+    "codesniffer"
+  ],
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Bambang Adrian Sitompul",
+      "email": "bambang.adrian@gmail.com",
+      "homepage": "http://www.carapikir.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "squizlabs/php_codesniffer": "2.5.1"
+  },
+  "support": {
+    "email": "bambang.adrian@gmail.com",
+    "issues": "https://github.com/bambangadrian/customPhpCodeSniffer/issues",
+    "wiki": "https://github.com/bambangadrian/customPhpCodeSniffer/wiki",
+    "source": "https://github.com/bambangadrian/customPhpCodeSniffer.git"
+  },
+  "autoload": {
+    "classmap": [
+      "Custom"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
