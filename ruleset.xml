@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Custom">
+	<!-- This is Custom Code Standard Using PhpCodeSniffer -->
+	<!-- Author: Bambang Adrian S -->
     <description>Custom Code Standard Extends</description>
     <!-- Exclude pages that we do not use-->
     <exclude-pattern>*/vendor/*</exclude-pattern>
-    <exclude-pattern>*/assets/*</exclude-pattern>
+    <exclude-pattern>*/resources/*</exclude-pattern>
+	<exclude-pattern>*/assets/*</exclude-pattern>
     <exclude-pattern>*/storage/*</exclude-pattern>
-    <exclude-pattern>*/bin/*</exclude-pattern>
+    <exclude-pattern>*/tmp/*</exclude-pattern>
+	<exclude-pattern>*/doc/*</exclude-pattern>
+	<exclude-pattern>*/bin/*</exclude-pattern>
     <!-- Start to include custom code standard that take from other standard -->
     <rule ref="./Custom/Sniffs/"/>
     <!-- Include the whole PSR-1 standard -->
@@ -68,12 +73,6 @@
             <property name="eolChar" value="\n"/>
         </properties>
     </rule>
-    <!-- Only one argument per line in multi-line function calls -->
-    <rule ref="PEAR.Functions.FunctionCallSignature">
-        <properties>
-            <property name="allowMultipleArguments" value="false"/>
-        </properties>
-    </rule>
     <rule ref="Squiz.Classes.ClassDeclaration">
         <exclude name="Squiz.Classes.ClassDeclaration.EndFileAfterCloseBrace"/>
         <exclude name="Squiz.Classes.ClassDeclaration.MultipleClasses"/>
@@ -106,6 +105,7 @@
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
     <!-- Include parts of the Zend standard -->
     <rule ref="Zend.Files.ClosingTag"/>
-    <!-- Only parts of the PEAR standard -->
+    <!-- Include parts of the PEAR standard -->
+    <!-- Only one argument per line in multi-line function calls -->
     <rule ref="PEAR.Functions.FunctionCallSignature"/>
 </ruleset>
