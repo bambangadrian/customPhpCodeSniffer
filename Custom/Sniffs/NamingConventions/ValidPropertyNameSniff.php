@@ -1,7 +1,6 @@
 <?php
 /**
  * PEAR_Sniffs_NamingConventions_ValidClassNameSniff.
- *
  * PHP version 5
  *
  * @category  PHP
@@ -15,7 +14,6 @@
 
 /**
  * PEAR_Sniffs_NamingConventions_ValidClassNameSniff.
- *
  * Ensures class and interface names start with a capital letter
  * and use _ separators.
  *
@@ -38,17 +36,17 @@ class Custom_Sniffs_NamingConventions_ValidPropertyNameSniff implements PHP_Code
      */
     public function register()
     {
-        return array(
+        return [
             T_CLASS,
             T_INTERFACE
-        );
+        ];
     }//end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being processed.
-     * @param int $stackPtr The position of the current token
+     * @param int                  $stackPtr  The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -58,7 +56,7 @@ class Custom_Sniffs_NamingConventions_ValidPropertyNameSniff implements PHP_Code
         $tokens = $phpcsFile->getTokens();
         $className = $phpcsFile->findNext(T_STRING, $stackPtr);
         $name = trim($tokens[$className]['content']);
-        $errorData = array(ucfirst($tokens[$stackPtr]['content']));
+        $errorData = [ucfirst($tokens[$stackPtr]['content'])];
         // Make sure the first letter is a capital.
         if (preg_match('|^[A-Z]|', $name) === 0) {
             $error = '%s name must begin with a capital letter';
@@ -100,6 +98,3 @@ class Custom_Sniffs_NamingConventions_ValidPropertyNameSniff implements PHP_Code
     }
     //end process()
 }
-
-//end class
-?>

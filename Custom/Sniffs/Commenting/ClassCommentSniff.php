@@ -1,7 +1,6 @@
 <?php
 /**
  * Parses and verifies the doc comments for classes.
- *
  * PHP version 5
  *
  * @category  PHP
@@ -24,7 +23,6 @@ if (class_exists('PEAR_Sniffs_Commenting_ClassCommentSniff', true) === false) {
 
 /**
  * Parses and verifies the doc comments for classes.
- *
  * Verifies that :
  * <ul>
  *  <li>A doc comment exists.</li>
@@ -54,60 +52,60 @@ class Custom_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_
      * @var array
      */
     protected $tags = [
-        '@category' => [
-            'required' => false,
+        '@category'   => [
+            'required'       => false,
             'allow_multiple' => false,
-            'order_text' => 'precedes @package',
+            'order_text'     => 'precedes @package',
         ],
-        '@package' => [
-            'required' => true,
+        '@package'    => [
+            'required'       => true,
             'allow_multiple' => false,
-            'order_text' => 'follows @category',
+            'order_text'     => 'follows @category',
         ],
         '@subpackage' => [
-            'required' => true,
+            'required'       => true,
             'allow_multiple' => false,
-            'order_text' => 'follows @package',
+            'order_text'     => 'follows @package',
         ],
-        '@author' => [
-            'required' => true,
+        '@author'     => [
+            'required'       => true,
             'allow_multiple' => true,
-            'order_text' => 'follows @subpackage (if used) or @package',
+            'order_text'     => 'follows @subpackage (if used) or @package',
         ],
-        '@copyright' => [
-            'required' => false,
+        '@copyright'  => [
+            'required'       => false,
             'allow_multiple' => true,
-            'order_text' => 'follows @author',
+            'order_text'     => 'follows @author',
         ],
-        '@license' => [
-            'required' => false,
+        '@license'    => [
+            'required'       => false,
             'allow_multiple' => false,
-            'order_text' => 'follows @copyright (if used) or @author',
+            'order_text'     => 'follows @copyright (if used) or @author',
         ],
-        '@version' => [
-            'required' => false,
+        '@version'    => [
+            'required'       => false,
             'allow_multiple' => false,
-            'order_text' => 'follows @license',
+            'order_text'     => 'follows @license',
         ],
-        '@link' => [
-            'required' => false,
+        '@link'       => [
+            'required'       => false,
             'allow_multiple' => true,
-            'order_text' => 'follows @version',
+            'order_text'     => 'follows @version',
         ],
-        '@see' => [
-            'required' => false,
+        '@see'        => [
+            'required'       => false,
             'allow_multiple' => true,
-            'order_text' => 'follows @link',
+            'order_text'     => 'follows @link',
         ],
-        '@since' => [
-            'required' => false,
+        '@since'      => [
+            'required'       => false,
             'allow_multiple' => false,
-            'order_text' => 'follows @see (if used) or @link',
+            'order_text'     => 'follows @see (if used) or @link',
         ],
         '@deprecated' => [
-            'required' => false,
+            'required'       => false,
             'allow_multiple' => false,
-            'order_text' => 'follows @since (if used) or @see (if used) or @link',
+            'order_text'     => 'follows @since (if used) or @see (if used) or @link',
         ],
     ];
 
@@ -115,7 +113,7 @@ class Custom_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_
      * Process the package tag.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param array $tags The tokens for these tags.
+     * @param array                $tags      The tokens for these tags.
      *
      * @return void
      */
@@ -156,7 +154,7 @@ class Custom_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_
      * Process the subpackage tag.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param array $tags The tokens for these tags.
+     * @param array                $tags      The tokens for these tags.
      *
      * @return void
      */

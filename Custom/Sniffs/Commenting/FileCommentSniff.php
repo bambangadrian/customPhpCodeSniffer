@@ -1,7 +1,6 @@
 <?php
 /**
  * Parses and verifies the doc comments for classes.
- *
  * PHP version 5
  *
  * @category  PHP
@@ -24,7 +23,6 @@ if (class_exists('PEAR_Sniffs_Commenting_FileCommentSniff', true) === false) {
 
 /**
  * Parses and verifies the doc comments for classes.
- *
  * Verifies that :
  * <ul>
  *  <li>A doc comment exists.</li>
@@ -54,48 +52,48 @@ class Custom_Sniffs_Commenting_FileCommentSniff extends PEAR_Sniffs_Commenting_F
      * @var array
      */
     protected $tags = [
-        '@category' => [
-            'required' => false,
+        '@category'   => [
+            'required'       => false,
             'allow_multiple' => false,
         ],
-        '@package' => [
-            'required' => true,
+        '@package'    => [
+            'required'       => true,
             'allow_multiple' => false,
         ],
         '@subpackage' => [
-            'required' => false,
+            'required'       => false,
             'allow_multiple' => false,
         ],
-        '@author' => [
-            'required' => true,
+        '@author'     => [
+            'required'       => true,
             'allow_multiple' => true,
         ],
-        '@copyright' => [
-            'required' => true,
+        '@copyright'  => [
+            'required'       => true,
             'allow_multiple' => true,
         ],
-        '@license' => [
-            'required' => true,
+        '@license'    => [
+            'required'       => true,
             'allow_multiple' => false,
         ],
-        '@version' => [
-            'required' => false,
+        '@version'    => [
+            'required'       => false,
             'allow_multiple' => false,
         ],
-        '@link' => [
-            'required' => true,
+        '@link'       => [
+            'required'       => true,
             'allow_multiple' => true,
         ],
-        '@see' => [
-            'required' => false,
+        '@see'        => [
+            'required'       => false,
             'allow_multiple' => true,
         ],
-        '@since' => [
-            'required' => false,
+        '@since'      => [
+            'required'       => false,
             'allow_multiple' => false,
         ],
         '@deprecated' => [
-            'required' => false,
+            'required'       => false,
             'allow_multiple' => false,
         ],
     ];
@@ -104,7 +102,7 @@ class Custom_Sniffs_Commenting_FileCommentSniff extends PEAR_Sniffs_Commenting_F
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int $stackPtr The position of the current token
+     * @param int                  $stackPtr  The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return int
@@ -184,7 +182,7 @@ class Custom_Sniffs_Commenting_FileCommentSniff extends PEAR_Sniffs_Commenting_F
      * Process the package tag.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param array $tags The tokens for these tags.
+     * @param array                $tags      The tokens for these tags.
      *
      * @return void
      */
@@ -196,12 +194,10 @@ class Custom_Sniffs_Commenting_FileCommentSniff extends PEAR_Sniffs_Commenting_F
                 // No content.
                 continue;
             }
-
             $content = $tokens[($tag + 2)]['content'];
             if (PHP_CodeSniffer::isUnderscoreName($content) === true) {
                 continue;
             }
-
             $newContent = str_replace(' ', '_', $content);
             $newContent = trim($newContent, '_');
             $newContent = preg_replace('/[^A-Za-z_]/', '', $newContent);
@@ -213,15 +209,13 @@ class Custom_Sniffs_Commenting_FileCommentSniff extends PEAR_Sniffs_Commenting_F
                     $newName .= strtoupper($bit{0}) . substr($bit, 1) . '_';
                 }
             }
-
             $error = 'Package name "%s" is not valid; consider "%s" instead';
             $validName = trim($newName, '_');
-            $data = array(
+            $data = [
                 $content,
                 $validName,
-            );
+            ];
             // $phpcsFile->addError($error, $tag, 'InvalidPackage', $data);
         }//end foreach
-
     }//end processPackage()
 }

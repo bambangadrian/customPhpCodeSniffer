@@ -1,7 +1,6 @@
 <?php
 /**
  * Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff.
- *
  * PHP version 5
  *
  * @category  PHP
@@ -15,7 +14,6 @@
 
 /**
  * Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff.
- *
  * Checks to ensure that the logical operators 'and' and 'or' are not used.
  * Use the && and || operators instead.
  *
@@ -31,7 +29,6 @@
 class Custom_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniffer_Sniff
 {
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -39,17 +36,17 @@ class Custom_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSnif
      */
     public function register()
     {
-        return array(
+        return [
             T_BOOLEAN_AND,
             T_BOOLEAN_OR
-        );
+        ];
     }//end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being scanned.
-     * @param int $stackPtr The position of the current token in the
+     * @param int                  $stackPtr  The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -74,7 +71,3 @@ class Custom_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSnif
     }
     //end process()
 }
-
-//end class
-
-?>

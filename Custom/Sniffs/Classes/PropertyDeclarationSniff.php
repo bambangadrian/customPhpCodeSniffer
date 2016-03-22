@@ -1,8 +1,6 @@
 <?php
-
 /**
  * This file is part of the Symfony2-coding-standard (phpcs standard)
- *
  * PHP version 5
  *
  * @category PHP
@@ -15,7 +13,6 @@
 
 /**
  * Custom_Sniffs_Classes_PropertyDeclarationSniff.
- *
  * Throws warnings if properties are declared after methods
  *
  * @category PHP
@@ -32,9 +29,7 @@ class Custom_Sniffs_Classes_PropertyDeclarationSniff implements PHP_CodeSniffer_
      *
      * @var array
      */
-    public $supportedTokenizers = array(
-        'PHP',
-    );
+    public $supportedTokenizers = ['PHP'];
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -43,16 +38,14 @@ class Custom_Sniffs_Classes_PropertyDeclarationSniff implements PHP_CodeSniffer_
      */
     public function register()
     {
-        return array(
-            T_CLASS,
-        );
+        return [T_CLASS];
     }//end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int $stackPtr The position of the current token
+     * @param int                  $stackPtr  The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -61,16 +54,13 @@ class Custom_Sniffs_Classes_PropertyDeclarationSniff implements PHP_CodeSniffer_
     {
         $tokens = $phpcsFile->getTokens();
         $scope = $phpcsFile->findNext(T_FUNCTION, $stackPtr, $tokens[$stackPtr]['scope_closer']);
-
-        $wantedTokens = array(
+        $wantedTokens = [
             T_PUBLIC,
             T_PROTECTED,
             T_PRIVATE
-        );
-
+        ];
         while ($scope) {
             $scope = $phpcsFile->findNext($wantedTokens, $scope + 1, $tokens[$stackPtr]['scope_closer']);
-
             if ($scope && $tokens[$scope + 2]['code'] === T_VARIABLE) {
                 $phpcsFile->addError(
                     'Declare class properties before methods',
@@ -80,5 +70,4 @@ class Custom_Sniffs_Classes_PropertyDeclarationSniff implements PHP_CodeSniffer_
             }
         }
     }//end process()
-
 }//end class

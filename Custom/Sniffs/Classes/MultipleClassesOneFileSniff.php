@@ -1,8 +1,6 @@
 <?php
-
 /**
  * This file is part of the Symfony2-coding-standard (phpcs standard)
- *
  * PHP version 5
  *
  * @category PHP
@@ -15,9 +13,7 @@
 
 /**
  * Custom_Sniffs_Classes_MultipleClassesOneFileSniff.
- *
  * Throws errors if multiple classes are defined in a single file.
- *
  * Symfony coding standard specifies: "Define one class per file;"
  *
  * @category PHP
@@ -28,14 +24,13 @@
  */
 class Custom_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSniffer_Sniff
 {
+
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
-    public $supportedTokenizers = array(
-        'PHP',
-    );
+    public $supportedTokenizers = ['PHP'];
 
     /**
      * The number of times the T_CLASS token is encountered in the file.
@@ -58,14 +53,14 @@ class Custom_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSniff
      */
     public function register()
     {
-        return array(T_CLASS);
+        return [T_CLASS];
     }
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int $stackPtr The position of the current token in
+     * @param int                  $stackPtr  The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -76,16 +71,13 @@ class Custom_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSniff
             $this->classCount = 0;
             $this->currentFile = $phpcsFile->getFilename();
         }
-
         $this->classCount++;
-
         if ($this->classCount > 1) {
             $phpcsFile->addError(
                 'Multiple classes defined in a single file',
                 $stackPtr
             );
         }
-
         return;
     }
 }
