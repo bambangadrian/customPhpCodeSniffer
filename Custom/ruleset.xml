@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Custom">
     <!-- This is Custom Code Standard Using PhpCodeSniffer -->
-    <!-- Author: Bambang Adrian S -->
+    <!-- Author: Bambang Adrian Sitompul (bambang.adrian@gmail.com) -->
     <description>Custom Code Standard Extends</description>
     <!-- Exclude pages that we do not use-->
     <exclude-pattern>*/vendor/*</exclude-pattern>
@@ -17,7 +17,7 @@
     <rule ref="PSR1"/>
     <!-- Include the whole PSR-2 standard -->
     <rule ref="PSR2"/>
-    <!-- Include the whole PHPUnitStandard standard -->
+    <!-- Include the whole PHPUnitStandard standard - temporary removed because some sniff conflicted -->
     <!-- <rule ref="PHPUnitStandard"/> -->
     <!-- Start to select custom standard -->
     <!-- Include parts of the generic standard -->
@@ -36,7 +36,11 @@
     <rule ref="Generic.Formatting.NoSpaceAfterCast"/>
     <rule ref="Generic.Functions.CallTimePassByReference"/>
     <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
-    <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+    <!-- covered by Squiz FunctionDeclarationSniff  -->
+    <!-- this will be applied the conflict between squiz sniff and generic about the multi-line function declaration -->
+    <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman">
+        <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+    </rule>
     <rule ref="Generic.Metrics.CyclomaticComplexity"/>
     <rule ref="Generic.Metrics.NestingLevel"/>
     <rule ref="Generic.NamingConventions.CamelCapsFunctionName"/>
